@@ -5,7 +5,7 @@ import {
   getAllTouristicAttraction,
 } from "../services/colombianApiServices";
 import TableContent from "./TableContent";
-import RenderObject from "./preuba";
+import RenderObject from "./RenderObject";
 import ShowDataProcessing from "./ShowDataProcessing";
 import { airportByDepartmentAndCity, presidentsByPoliticalParty } from "../services/dataProcessing";
 
@@ -26,17 +26,15 @@ const Tab = () => {
       case 0:
         getAllPresidents()
           .then((response) => {
-            // console.log(response);
             setData(response[0]);
             setResponseTime(response[1]);
-            // setDataProcessing(presidentsByPoliticalParty(response[0]));
+            setDataProcessing(presidentsByPoliticalParty(response[0]));
           })
           .catch((error) => console.error(error));
         break;
       case 1:
         getAllAirports()
           .then((response) => {
-            console.log(response);
             setData(response[0]);
             setResponseTime(response[1]);
             setDataProcessing(airportByDepartmentAndCity(response[0]))
@@ -46,9 +44,9 @@ const Tab = () => {
       case 2:
         getAllTouristicAttraction()
           .then((response) => {
-            console.log(response);
             setData(response[0]);
             setResponseTime(response[1]);
+            setDataProcessing(null)
           })
           .catch((error) => console.error(error));
         break;

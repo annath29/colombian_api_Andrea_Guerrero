@@ -1,7 +1,6 @@
 import React from "react";
 
 const TableContent = ({ data }) => {
-  console.log(" tabla obj",data)
   if (data != null) {
     const headers = data.length > 0 ? Object.keys(data[0]) : [];
    

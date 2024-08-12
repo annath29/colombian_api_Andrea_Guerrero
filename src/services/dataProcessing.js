@@ -25,21 +25,19 @@ export const presidentsByPoliticalParty =  (obj) => {
 }
 
 const structureObject = (obj) =>{
-  console.log("elobject",obj)
-  const result
+  const departaments = {}
+  const result =[]
   Object.entries(obj).forEach(([key, value]) => {
-    console.log("departament")
     if (typeof value === "object" && value !== null) {
-        console.log(key)
+        
        structureObject(value)
-       result.push({
-        
-        
-       })
+       
     }
     else{
-    console.log("key", key,":",value)
-
+      result.push({
+          "city":key,
+          "airports":value
+      })
     }
   })
 }
@@ -62,8 +60,6 @@ export const airportByDepartmentAndCity = (obj) =>{
     conteo[deptName][cityName]++;
   });
   const result = []
-  // console.log("obj",conteo);
- 
   structureObject(conteo)
  
 
